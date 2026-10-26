@@ -206,3 +206,5 @@ img{height:auto}
 
 .guarantee>img{width:165px}
 @media(max-width:820px){.guarantee>img{width:150px}}
+
+.hero .mockup{width:min(760px,100%);filter:none;margin-top:14px}

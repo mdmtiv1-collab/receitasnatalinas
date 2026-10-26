@@ -8,7 +8,7 @@ const CONFIG = {
   precoDesconto: 'R$ 29,90',      // preço do Completo oferecido no pop-up ao clicar no Essencial
   fimDaOferta: '2026-12-15T23:59:59-03:00',  // data REAL de encerramento
   emailSuporte: '',               // TODO: e-mail de suporte (aparece na garantia)
-  lojaLogo: '',                   // TODO: caminho da logo da loja, ex.: 'assets/logo-loja.webp' (aparece na biografia)
+  lojaLogo: 'assets/logo-loja.webp',                 // logo da loja (aparece na biografia)
   lojaInstagram: '@ladoceriaroyal_', // @ do Instagram da loja (aparece na biografia, com link)
   amostras: ['foto1','d10','f04','d16','foto3','b02','d47','foto5','g04','d34','f10','d12','s06','d45','f25','d52'],
   amostras2: ['foto4','d14','f19','foto6','d18','foto2','b05','foto7','f21','d36','d31','s05','d26','f33','b09','d22','s07'],

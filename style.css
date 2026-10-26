@@ -220,3 +220,5 @@ img{height:auto}
 /* ===== mockup 3D do livro (sem moldura) ===== */
 .recebe>img{border:0;border-radius:0;box-shadow:none;filter:drop-shadow(0 18px 22px rgba(74,6,16,.35));max-width:360px}
 @media(max-width:820px){.recebe>img{max-width:250px}}
+
+footer{padding-bottom:30px!important}

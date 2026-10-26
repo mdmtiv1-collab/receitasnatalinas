@@ -13,7 +13,6 @@ const CONFIG = {
 
 document.querySelectorAll('[data-buy]').forEach(a => { a.href = a.dataset.buy === 'basic' ? CONFIG.checkoutBasic : CONFIG.checkoutMain; });
 document.getElementById('preco').textContent = CONFIG.preco;
-document.getElementById('preco-s').textContent = CONFIG.preco;
 document.getElementById('preco-basic').textContent = CONFIG.precoBasic;
 document.getElementById('ano').textContent = new Date().getFullYear();
 if (CONFIG.emailSuporte) document.getElementById('email').textContent = CONFIG.emailSuporte;
@@ -37,11 +36,3 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }
 }
 
-// barra fixa no celular: aparece depois do topo e some na área de preço
-const sticky = document.getElementById('sticky');
-const pricing = document.getElementById('pricing');
-function sticks() {
-  const r = pricing.getBoundingClientRect();
-  sticky.classList.toggle('on', scrollY > 500 && !(r.top < innerHeight && r.bottom > 0));
-}
-addEventListener('scroll', sticks, { passive: true }); sticks();

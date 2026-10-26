@@ -6,8 +6,8 @@ const CONFIG = {
   preco: 'R$ 29,90',
   fimDaOferta: '2026-12-15T23:59:59-03:00',  // data REAL de encerramento
   emailSuporte: '',               // TODO: e-mail de suporte (aparece na garantia)
-  amostras: ['d10','f04','d16','b02','d47','g04','d34','f10','d12','s06','d45','f25','d52'],
-  amostras2: ['d14','f19','d18','b05','f21','d36','d31','s05','d26','f33','b09','d22','s07'],
+  amostras: ['foto1','d10','f04','d16','foto3','b02','d47','g04','d34','f10','d12','s06','d45','f25','d52'],
+  amostras2: ['foto4','d14','f19','d18','foto2','b05','f21','d36','d31','s05','d26','f33','b09','d22','s07'],
 };
 // ================================
 
@@ -22,7 +22,7 @@ document.getElementById('fim').textContent = new Date(CONFIG.fimDaOferta).toLoca
 // "por dentro do livro": duas fileiras que rolam sozinhas em sentidos opostos
 [['row1', CONFIG.amostras], ['row2', CONFIG.amostras2]].forEach(([id, lista]) => {
   const t = document.getElementById(id);
-  const html = lista.map(n => `<img src="assets/m/${n}.webp" alt="" width="150" height="212">`).join('');
+  const html = lista.map(n => `<img src="assets/m/${n}.webp" alt="" height="210">`).join('');
   t.innerHTML = html + html;
 });
 

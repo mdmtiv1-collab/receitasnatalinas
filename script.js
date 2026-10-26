@@ -25,6 +25,26 @@ document.getElementById('fim').textContent = new Date(CONFIG.fimDaOferta).toLoca
   t.innerHTML = html + html;
 });
 
+// vídeos em loop, sem som e sem controles, passando em carrossel
+(function () {
+  const lista = ['v1', 'v2', 'v3', 'v4'];
+  const html = lista.map(n => '<div class="vcard"><video data-v="' + n + '" src="assets/v/' + n + '.mp4" poster="assets/v/' + n + '.webp" muted loop playsinline preload="auto" disablepictureinpicture></video></div>').join('');
+  const t = document.getElementById('rowv');
+  if (!t) return;
+  t.innerHTML = html + html;
+  const vids = [...t.querySelectorAll('video')];
+  vids.forEach(v => { v.muted = true; v.defaultMuted = true; v.setAttribute('playsinline', ''); });
+  const tocar = v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+  vids.forEach(tocar);
+  // reforça a reprodução quando a seção aparece (alguns celulares só liberam depois da primeira rolagem)
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tocar(e.target); }), { threshold: 0.1 });
+    vids.forEach(v => io.observe(v));
+  }
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) vids.forEach(tocar); });
+  addEventListener('touchstart', () => vids.forEach(v => { if (v.paused) tocar(v); }), { once: true, passive: true });
+})();
+
 // neve
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const snow = document.getElementById('snow');

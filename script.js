@@ -20,7 +20,8 @@ document.getElementById('preco').textContent = CONFIG.preco;
 document.getElementById('preco-basic').textContent = CONFIG.precoBasic;
 document.getElementById('ano').textContent = new Date().getFullYear();
 if (CONFIG.emailSuporte) document.getElementById('email').textContent = CONFIG.emailSuporte;
-document.getElementById('fim').textContent = new Date(CONFIG.fimDaOferta).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
+// oferta válida "até hoje": a data é a do dia atual (horário de Brasília) e muda sozinha a cada dia
+document.getElementById('fim').textContent = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' });
 // biografia da loja: logo + @ do Instagram (só aparecem quando preenchidos no CONFIG)
 (function () {
   const top = document.querySelector('.bio-top');

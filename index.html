@@ -60,24 +60,27 @@
   </div>
 </section>
 
-<!-- 05 · Prova social -->
-<section class="sec red proof">
-  <div class="wrap center narrow">
-    <p class="kicker">Na minha loja de doces, na semana do Natal passado</p>
-    <p class="bignum">R$ 4.000</p>
-    <p class="lightsoft">E neste ano estamos projetando o dobro. E você, vai deixar o Natal chegar sem cardápio?</p>
-    <a class="btn" href="#pricing" data-nav>Quero começar agora</a>
-    <p class="fine light">Resultado e projeção da minha loja, não garantia. O valor depende da sua produção, dos seus preços e da sua divulgação.</p>
-  </div>
-</section>
-
-<!-- 06 · O que você recebe -->
-<section class="sec">
+<!-- 05 + 06 · Quem sou eu (prova social) + O que você recebe -->
+<section class="sec about">
   <div class="wrap">
+    <div class="bio">
+      <div class="bio-top">
+        <img id="bio-logo" class="bio-logo" alt="Logo da minha loja de doces" width="84" height="84" hidden>
+        <div class="bio-id">
+          <span class="bio-k">Minha loja de doces</span>
+          <a id="bio-ig" class="bio-ig" target="_blank" rel="noopener" hidden></a>
+        </div>
+      </div>
+      <p class="bio-t">Na semana do Natal passado, faturamos</p>
+      <p class="bignum">R$ 4.000</p>
+      <p class="bio-s">E neste ano estamos projetando o dobro. E você, vai deixar o Natal chegar sem cardápio?</p>
+      <p class="fine light">Resultado e projeção da minha loja, não garantia. O valor depende da sua produção, dos seus preços e da sua divulgação.</p>
+    </div>
+
     <div class="recebe">
       <img src="assets/livro-3d.webp" alt="Natal Lucrativo: +50 receitas, sobremesas para vender no Natal" width="640" height="960" loading="lazy">
       <div>
-                <h2 class="left">Natal Lucrativo: +50 receitas para vender no Natal</h2>
+        <h2 class="left">Natal Lucrativo: +50 receitas para vender no Natal</h2>
         <p class="soft">Receitas de confeitaria reunidas em um só material, para você montar o cardápio de Natal.</p>
         <ul class="checks">
           <li><b>9 massas:</b> branca coringa, chocolate, red velvet, cenoura, churros, brownie, cookie, pastel de ninho e pão de mel</li>
@@ -87,6 +90,7 @@
           <li><b>Acesso imediato</b> para ler no celular ou no computador, e imprimir se quiser</li>
         </ul>
         <p class="more">E muito mais…</p>
+        <a class="btn" href="#pricing" data-nav>Quero começar agora</a>
       </div>
     </div>
   </div>
@@ -138,7 +142,7 @@
           <li class="gift">Bônus #3: Lucrando com Sonhos</li>
         </ul>
         <p class="worth">Valor dos itens separados: <s>R$ 182,70</s></p>
-        <p class="price"><small>por apenas</small><span id="preco">R$ 29,90</span></p>
+        <p class="price"><small>por apenas</small><span id="preco">R$ 39,90</span></p>
         <a class="btn big" href="#" data-buy="main">Quero o Completo</a>
         <p class="secure dark">🔒 Compra segura · Pagamento único</p>
       </article>
@@ -187,6 +191,25 @@
   <p>© <span id="ano"></span> Natal Lucrativo. Todos os direitos reservados.</p>
 </footer>
 
+
+<!-- Pop-up: oferta do Completo com desconto (abre ao clicar no Essencial) -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-t">
+  <div class="modal-box">
+    <button class="modal-x" id="m-x" type="button" aria-label="Fechar">&times;</button>
+    <span class="mtag">Oferta exclusiva</span>
+    <h3 id="m-t">Espere! Leve o Completo com <em id="m-desc">R$&nbsp;10</em> de desconto</h3>
+    <img src="assets/mockup-hero-700.webp" alt="Natal Lucrativo completo, com os 3 bônus" width="700" height="467" loading="lazy">
+    <ul>
+      <li>Natal Lucrativo (+50 receitas)</li>
+      <li>Bônus #1: Geladinhos Gourmet</li>
+      <li>Bônus #2: Lucrando com Brownies</li>
+      <li>Bônus #3: Lucrando com Sonhos</li>
+    </ul>
+    <p class="mp"><s id="m-de">R$ 39,90</s> <b id="m-por">R$ 29,90</b></p>
+    <a class="btn big" id="m-sim" href="#">Sim, quero o Completo</a>
+    <a class="m-no" id="m-nao" href="#">Não, quero só o Essencial</a>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

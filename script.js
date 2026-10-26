@@ -2,10 +2,14 @@
 const CONFIG = {
   checkoutMain: '#pricing',       // TODO: checkout do Completo (order bump e upsell ficam na plataforma)
   checkoutBasic: '#pricing',      // TODO: checkout do Essencial
+  checkoutDesconto: '#pricing',   // TODO: checkout do Completo com desconto (R$ 29,90), usado no pop-up
   precoBasic: 'R$ 19,90',
-  preco: 'R$ 29,90',
+  preco: 'R$ 39,90',              // preço do Completo
+  precoDesconto: 'R$ 29,90',      // preço do Completo oferecido no pop-up ao clicar no Essencial
   fimDaOferta: '2026-12-15T23:59:59-03:00',  // data REAL de encerramento
   emailSuporte: '',               // TODO: e-mail de suporte (aparece na garantia)
+  lojaLogo: '',                   // TODO: caminho da logo da loja, ex.: 'assets/logo-loja.webp' (aparece na biografia)
+  lojaInstagram: '@ladoceriaroyal_', // @ do Instagram da loja (aparece na biografia, com link)
   amostras: ['foto1','d10','f04','d16','foto3','b02','d47','foto5','g04','d34','f10','d12','s06','d45','f25','d52'],
   amostras2: ['foto4','d14','f19','foto6','d18','foto2','b05','foto7','f21','d36','d31','s05','d26','f33','b09','d22','s07'],
 };
@@ -17,6 +21,12 @@ document.getElementById('preco-basic').textContent = CONFIG.precoBasic;
 document.getElementById('ano').textContent = new Date().getFullYear();
 if (CONFIG.emailSuporte) document.getElementById('email').textContent = CONFIG.emailSuporte;
 document.getElementById('fim').textContent = new Date(CONFIG.fimDaOferta).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
+// biografia da loja: logo + @ do Instagram (só aparecem quando preenchidos no CONFIG)
+(function () {
+  const top = document.querySelector('.bio-top');
+  if (CONFIG.lojaLogo) { const l = document.getElementById('bio-logo'); l.src = CONFIG.lojaLogo; l.hidden = false; } else top.classList.add('solo');
+  if (CONFIG.lojaInstagram) { const h = CONFIG.lojaInstagram.replace(/^@/, ''); const a = document.getElementById('bio-ig'); a.textContent = '@' + h; a.href = 'https://instagram.com/' + h; a.hidden = false; }
+})();
 
 // "por dentro do livro": duas fileiras que rolam sozinhas em sentidos opostos
 [['row1', CONFIG.amostras], ['row2', CONFIG.amostras2]].forEach(([id, lista]) => {
@@ -43,6 +53,29 @@ document.getElementById('fim').textContent = new Date(CONFIG.fimDaOferta).toLoca
   }
   document.addEventListener('visibilitychange', () => { if (!document.hidden) vids.forEach(tocar); });
   addEventListener('touchstart', () => vids.forEach(v => { if (v.paused) tocar(v); }), { once: true, passive: true });
+})();
+
+// pop-up: ao clicar no Essencial, oferece o Completo com desconto antes do checkout
+(function () {
+  const num = v => parseFloat(String(v).replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+  const brl = n => 'R$ ' + n.toFixed(2).replace('.', ',');
+  const modal = document.getElementById('modal');
+  if (!modal) return;
+  const desc = num(CONFIG.preco) - num(CONFIG.precoDesconto);
+  document.getElementById('m-desc').textContent = brl(desc).replace(',00', '');
+  document.getElementById('m-de').textContent = CONFIG.preco;
+  document.getElementById('m-por').textContent = CONFIG.precoDesconto;
+  const sim = document.getElementById('m-sim'), nao = document.getElementById('m-nao');
+  sim.href = CONFIG.checkoutDesconto; sim.textContent = 'Sim, quero o Completo por ' + CONFIG.precoDesconto.replace(' ', ' ');
+  nao.href = CONFIG.checkoutBasic; nao.textContent = 'Não, quero só o Essencial (' + CONFIG.precoBasic.replace(' ', ' ') + ')';
+  let ultimo = null;
+  const abrir = () => { ultimo = document.activeElement; modal.hidden = false; document.body.classList.add('modal-open'); sim.focus(); };
+  const fechar = () => { modal.hidden = true; document.body.classList.remove('modal-open'); if (ultimo) ultimo.focus(); };
+  document.querySelectorAll('[data-buy="basic"]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); abrir(); }));
+  document.getElementById('m-x').addEventListener('click', fechar);
+  modal.addEventListener('click', e => { if (e.target === modal) fechar(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) fechar(); });
+  [sim, nao].forEach(a => a.addEventListener('click', () => { if (a.getAttribute('href') === '#pricing') fechar(); }));
 })();
 
 // neve

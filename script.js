@@ -29,17 +29,20 @@ document.getElementById('fim').textContent = new Date().toLocaleDateString('pt-B
   if (CONFIG.lojaInstagram) { const h = CONFIG.lojaInstagram.replace(/^@/, ''); const a = document.getElementById('bio-ig'); a.textContent = '@' + h; a.href = 'https://instagram.com/' + h; a.hidden = false; }
 })();
 
+// carrosséis e vídeos só começam a carregar depois que a página principal (hero) terminou, para não disputar banda com a imagem do topo
+function depoisDoLoad(fn) { const go = () => setTimeout(fn, 300); document.readyState === 'complete' ? go() : addEventListener('load', go, { once: true }); }
+
 // "por dentro do livro": duas fileiras que rolam sozinhas em sentidos opostos
-[['row1', CONFIG.amostras], ['row2', CONFIG.amostras2]].forEach(([id, lista]) => {
+depoisDoLoad(() => [['row1', CONFIG.amostras], ['row2', CONFIG.amostras2]].forEach(([id, lista]) => {
   const t = document.getElementById(id);
   const html = lista.map(n => `<img src="assets/m/${n}.webp" alt="" height="210">`).join('');
   t.innerHTML = html + html;
-});
+}));
 
 // vídeos em loop, sem som e sem controles, passando em carrossel
-(function () {
+depoisDoLoad(function () {
   const lista = ['v1', 'v2', 'v3', 'v4'];
-  const html = lista.map(n => '<div class="vcard"><video data-v="' + n + '" src="assets/v/' + n + '.mp4" poster="assets/v/' + n + '.webp" muted loop playsinline preload="metadata" disablepictureinpicture></video></div>').join('');
+  const html = lista.map(n => '<div class="vcard"><video data-v="' + n + '" src="assets/v/' + n + '.mp4" poster="assets/v/' + n + '.webp" muted loop playsinline preload="none" disablepictureinpicture></video></div>').join('');
   const t = document.getElementById('rowv');
   if (!t) return;
   t.innerHTML = html + html;
@@ -54,7 +57,7 @@ document.getElementById('fim').textContent = new Date().toLocaleDateString('pt-B
   }
   document.addEventListener('visibilitychange', () => { if (!document.hidden) vids.forEach(tocar); });
   addEventListener('touchstart', () => vids.forEach(v => { if (v.paused) tocar(v); }), { once: true, passive: true });
-})();
+});
 
 // pop-up: ao clicar no Essencial, oferece o Completo com desconto antes do checkout
 (function () {

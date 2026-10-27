@@ -1,8 +1,8 @@
 // ===== CONFIG: ajuste aqui =====
 const CONFIG = {
-  checkoutMain: '#pricing',       // TODO: checkout do Completo (order bump e upsell ficam na plataforma)
-  checkoutBasic: '#pricing',      // TODO: checkout do Essencial
-  checkoutDesconto: '#pricing',   // TODO: checkout do Completo com desconto (R$ 29,90), usado no pop-up
+  checkoutMain: 'https://pay.wiapy.com/tZpNPbkuikSF',  // checkout do Completo (order bump e upsell ficam na plataforma)
+  checkoutBasic: 'https://pay.wiapy.com/mkGUD_PSfLp6',  // checkout do Essencial
+  checkoutDesconto: 'https://pay.wiapy.com/6mt3Xq-7ysg5',  // Completo com desconto (pop-up)
   precoBasic: 'R$ 19,90',
   preco: 'R$ 39,90',              // preço do Completo
   precoDesconto: 'R$ 29,90',      // preço do Completo oferecido no pop-up ao clicar no Essencial
